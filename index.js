@@ -1,8 +1,10 @@
+module.exports = Phrase;
 // Adds `reverse` to all strings.
 String.prototype.reverse = function() {
   return Array.from(this).reverse().join("");
 }
 
+//exercises
 String.prototype.blank = function() {
   return !!(this.match(/^\s*$/g));
 }
@@ -34,7 +36,13 @@ function Phrase(content) {
   
   // Returns content processed for palindrome testing.
   this.processedContent = function processedContent() {
-    return this.processor(this.content);
+    return this.processor(this.letters());
+  }
+  
+  // Returns the letters in the content.
+  this.letters = function letters() {
+    const letterRegex = /[a-z]/gi;
+    return (this.content.match(/[a-z]/gi) || []).join("");
   }
   
   // Returns true if the phrase is a palindrome, false otherwise.
